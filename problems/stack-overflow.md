@@ -1,156 +1,24 @@
 # Designing Stack Overflow
-Stack Overflow is a widely-used question-and-answer platform for programmers, known for its community-driven approach to solving coding problems. 
-
-In this article, we'll delve into the object-oriented design of a simplified version of Stack Overflow, covering everything from requirements to a complete Java implementation.
 
 ## Requirements
-- User Management: Users can register, log in, and manage their profiles.
-- Question Handling: Users can post, view, and search for questions.
-- Answering Questions: Users can answer posted questions.
-- Comment System: Users can comment on both questions and answers.
-- Voting System: Users can upvote or downvote questions and answers.
+1. Users can post questions, answer questions, and comment on questions and answers.
+2. Users can vote on questions and answers.
+3. Questions should have tags associated with them.
+4. Users can search for questions based on keywords, tags, or user profiles.
+5. The system should assign reputation score to users based on their activity and the quality of their contributions.
+6. The system should handle concurrent access and ensure data consistency.
 
-## Core Use Cases
-- Posting Questions
-- Answering Questions
-- Commenting on Questions and Answers
-- Voting on Questions and Answers
+## Implementations
+#### [Java Implementation](../solutions/java/src/stackoverflow/) 
+#### [Python Implementation](../solutions/python/stackoverflow/)
+#### [Golang Implementation](../solutions/golang/stackOverFlow/)
 
-## Key Classes:
-- **User Class:** Manages user details, their posted questions, and answers.
-- **Question Class:** Represents a question, including its answers, comments, and votes.
-- **Answer Class:** Represents an answer to a question, with comments and votes.
-- **Comment Class:** Represents a comment made on either a question or an answer.
-- **Vote Class:** Manages voting on questions and answers.
-- **QuestionBoard Class:** Manages the collection of questions posted to the platform.
-
-## Java Implementation
-### User Class
-```java
-import java.util.ArrayList;
-
-public class User {
-    private String username;
-    private String password; // For simplicity, not encrypted here
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    // Post a question
-    public Question postQuestion(String title, String content) {
-        return new Question(title, content, this);
-    }
-
-    // Post an answer
-    public Answer postAnswer(Question question, String answerText) {
-        Answer answer = new Answer(this, answerText);
-        question.addAnswer(answer);
-        return answer;
-    }
-
-    // Getters and setters
-}
-```
-
-### Question Class
-```java
-import java.util.ArrayList;
-
-public class Question {
-    private String title;
-    private String content;
-    private User askedBy;
-    private ArrayList<Answer> answers;
-    private ArrayList<Comment> comments;
-    private ArrayList<Vote> votes;
-
-    public Question(String title, String content, User askedBy) {
-        this.title = title;
-        this.content = content;
-        this.askedBy = askedBy;
-        this.answers = new ArrayList<>();
-        this.comments = new ArrayList<>();
-        this.votes = new ArrayList<>();
-    }
-
-    // Add an answer to this question
-    public void addAnswer(Answer answer) {
-        answers.add(answer);
-    }
-
-    // Add a comment to this question
-    public void addComment(Comment comment) {
-        comments.add(comment);
-    }
-
-    // Add a vote to this question
-    public void addVote(Vote vote) {
-        votes.add(vote);
-    }
-
-    // Getters and setters
-}
-```
-
-### Answer Class
-```java
-import java.util.ArrayList;
-
-public class Answer {
-    private User responder;
-    private String answerText;
-    private ArrayList<Comment> comments;
-    private ArrayList<Vote> votes;
-
-    public Answer(User responder, String answerText) {
-        this.responder = responder;
-        this.answerText = answerText;
-        this.comments = new ArrayList<>();
-        this.votes = new ArrayList<>();
-    }
-
-    // Add a comment to this answer
-    public void addComment(Comment comment) {
-        comments.add(comment);
-    }
-
-    // Add a vote to this answer
-    public void addVote(Vote vote) {
-        votes.add(vote);
-    }
-
-    // Getters and setters
-}
-```
-
-### Comment Class
-```java
-public class Comment {
-    private User commenter;
-    private String text;
-
-    public Comment(User commenter, String text) {
-        this.commenter = commenter;
-        this.text = text;
-    }
-
-    // Getters and setters
-}
-```
-
-### Vote Class
-```java
-public class Vote {
-    private User voter;
-    private boolean isUpvote;
-
-    public Vote(User voter, boolean isUpvote) {
-        this.voter = voter;
-        this.isUpvote = isUpvote;
-    }
-
-    // Getters and setters
-}
-```
+## Classes, Interfaces and Enumerations
+1. The **User** class represents a user of the Stack Overflow system, with properties such as id, username, email, and reputation.
+2. The **Question** class represents a question posted by a user, with properties such as id, title, content, author, answers, comments, tags, votes and creation date.
+3. The **Answer** class represents an answer to a question, with properties such as id, content, author, associated question, comments, votes and creation date.
+4. The **Comment** class represents a comment on a question or an answer, with properties such as id, content, author, and creation date.
+5. The **Tag** class represents a tag associated with a question, with properties such as id and name.
+6. The **Vote** class represents vote associated with a question/answer.
+7. The **StackOverflow** class is the main class that manages the Stack Overflow system. It provides methods for creating user, posting questions, answers, and comments, voting on questions and answers, searching for questions, and retrieving questions by tags and users.
+8.  The **StackOverflowDemo** class demonstrates the usage of the Stack Overflow system by creating users, posting questions and answers, voting, searching for questions, and retrieving questions by tags and users.
