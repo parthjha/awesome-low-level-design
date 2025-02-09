@@ -11,7 +11,8 @@
 ## Implementations
 #### [Java Implementation](../solutions/java/src/trafficsignalsystem/) 
 #### [Python Implementation](../solutions/python/trafficsignalsystem/)
-#### [C# Implementation](../solutions/c#/TrafficSignalSystem/)
+#### [C# Implementation](../solutions/c%23/TrafficSignalSystem/)
+#### [Go Implementation](../solutions/golang/trafficsignalsystem/)
 
 ## Classes, Interfaces and Enumerations
 1. The **Signal** enum represents the different states of a traffic light: red, yellow, and green.

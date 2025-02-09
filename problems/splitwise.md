@@ -13,7 +13,8 @@
 ## Implementations
 #### [Java Implementation](../solutions/java/src/splitwise/) 
 #### [Python Implementation](../solutions/python/splitwise/)
-#### [C# Implementation](../solutions/c#/Splitwise/)
+#### [C# Implementation](../solutions/c%23/Splitwise/)
+#### [Go Implementation](../solutions/golang/splitwise/)
 
 ## Classes, Interfaces and Enumerations
 1. The **User** class represents a user in the Splitwise system, with properties such as ID, name, email, and a map to store balances with other users.

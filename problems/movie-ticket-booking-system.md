@@ -13,7 +13,8 @@
 ## Implementations
 #### [Java Implementation](../solutions/java/src/movieticketbookingsystem/) 
 #### [Python Implementation](../solutions/python/movieticketbookingsystem/)
-#### [C# Implementation](../solutions/c#/MovieTicketBookingSystem/)
+#### [C# Implementation](../solutions/c%23/MovieTicketBookingSystem/)
+#### [Go Implementation](../solutions/golang/movieticketbookingsystem/)
 
 ## Classes, Interfaces and Enumerations
 1. The **Movie** class represents a movie with properties such as ID, title, description, and duration.
